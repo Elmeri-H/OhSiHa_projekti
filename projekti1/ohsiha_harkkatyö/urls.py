@@ -1,11 +1,11 @@
 from django.urls import path
 from . import views
-from .views import list_questions, create_question, update_question, delete_question
+from .views import home, create_spot, update_spot, delete_spot
 
 urlpatterns = [ 
-    path('signup/', views.SignUp.as_view(), name='signup'),
-    path('', list_questions, name='list_questions'),
-    path('new', create_question, name='create_question'),
-    path('update/<int:id>/', update_question, name='update_question'),
-    path('delete/<int:id>/', delete_question, name='delete_question'),
+    path('signup/', views.SignUp, name='signup'),
+    path('', home, name='home'),
+    path('new', create_spot, name='create_spot'),
+    path('update/<int:id>/', update_spot, name='update_spot'),
+    path('delete/<int:id>/', delete_spot, name='delete_spot'),
 ]

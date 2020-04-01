@@ -2,15 +2,9 @@ from django.db import models
 
 # Create your models here.
 
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
+class Skeittispotti(models.Model):
+    Nimi = models.CharField(max_length=200)
+    Kaupunginosa = models.CharField(max_length=200)
+    Sijainti = models.CharField(max_length=200)
     def __str__(self):
-        return self.question_text
-
-
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
-    def __str__(self):
-        return self.choice_text
+        return self.Nimi, self.Kaupunginosa, self.Sijainti

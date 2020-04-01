@@ -1,7 +1,18 @@
 from django import forms
-from .models import Question
+from .models import Skeittispotti
 
-class QuestionForm(forms.ModelForm):
+class SpottiForm(forms.ModelForm):
     class Meta:
-        model = Question
-        fields = ['question_text']
+        model = Skeittispotti
+        fields = ['Nimi', 'Kaupunginosa', 'Sijainti']
+        widgets = {
+            'Nimi' : forms.TextInput(
+                attrs={'class':'form-control'}
+            ),
+            'Kaupunginosa' : forms.TextInput(
+                attrs={'class':'form-control'}
+            ),
+            'Sijainti' : forms.TextInput(
+                attrs={'class':'form-control'}
+            )
+        }

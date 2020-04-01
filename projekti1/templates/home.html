@@ -1,13 +1,81 @@
 {% extends 'base.html' %}
-
-{% block title %}Home{% endblock %}
+{% block title %}Tampereen rullalautailualueet{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">logout</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
-{% endif %}
-{% endblock %}
+<div>
+    <div class=container-fluid>
+        <br>
+        <h1>Tampereen rullalautailualueet</h1>
+        
+            <div style="position:absolute;top:20px;right:20px;">
+                {% if user.is_authenticated %}
+                <div class="alert alert-success">
+                    Terve {{ user.username }}!
+                    </div>
+                <br>
+                <a class="btn btn-danger" href="{% url 'logout' %}">Kirjaudu ulos</a>
+                <a class="btn btn-success" href="{% url 'create_spot' %}">Lisää spotti</a>
+
+                {% else %}
+                <p class="alert alert-danger" role=alert>Kirjaudu sisään tai rekisteröidy muokataksesi spotteja</p>
+                <a class="btn btn-primary" href="{% url 'login' %}">Kirjaudu sisään</a>
+                <a class="btn btn-primary" href="{% url 'signup' %}">Rekisteröidy</a>
+                {% endif %}
+            </div>
+
+        <br>
+    </div>
+
+    <div class=container-fluid>
+        <br>
+        <h2>Skeittipuistot</h2>
+        <br>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Nimi</th>
+            <th scope="col">Kaupunginosa</th>
+            <th scope="col">Sijainti</th>
+        </tr>
+
+        {%for field in data%}
+        <tr>
+            <td>{{ field.ALUE_NIMI}}</td>
+            <td>{{ field.KAUPUNGINOSA}}</td>
+            <td>{{ field.ALUE_SIJ}}</td>
+        </tr>
+        {% endfor %}
+        
+    </table>
+    </div>
+
+    <div class=container-fluid>
+        
+        <br>
+        <h2>Skeittispotit</h2>
+        <br>
+        {% if spots %}
+        <table class="table table-striped">
+            <tr>
+                <th scope="col">Nimi</th>
+                <th scope="col">Kaupunginosa</th>
+                <th scope="col">Sijainti</th>
+                <th scope="col"></th>
+            </tr>
+    
+        {%for spot in spots%}
+        <tr>
+            <td>{{ spot.Nimi}}</td>
+            <td>{{ spot.Kaupunginosa}}</td>
+            <td>{{ spot.Sijainti}}</td>
+            {% if user.is_authenticated %}
+            <td><a class="btn btn-info" href="{% url 'update_spot' spot.id %}">Muokkaa</td>
+                {% endif %}
+        </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+            <h3>Ei skeittispotteja saatavilla. :( Lisää ensimmäinen! </h3>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

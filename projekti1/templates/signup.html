@@ -1,12 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}Sign Up{% endblock %}
-
 {% block content %}
-  <h2>Sign up</h2>
+<div class="container">
+  <div class="col-sm-6">
+    <div class='panel panel-info'>
+      <div class='panel-heading'> Luo käyttäjä </div>
+      <div class='panel-body'>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        
+        {% for error in field.errors %}
+          <p class='alert alert-danger'>{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <div class="btn-toolbar" style="padding-left: 15px">
+      <button class='btn btn-primary' type="submit">Rekisteröidy</button>
+      <a class="btn btn-info" href="{% url 'home' %}">Takaisin</a>
+    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
 {% endblock %}

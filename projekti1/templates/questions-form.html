@@ -1,22 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>New/Update question</h1>
+{% extends 'base.html' %}
+{% block title %}Kirjaudu sisään{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-sm-6">
+      <div class='panel panel-info'>
+        <div class='panel-heading'> Lisää uusi tai päivitä olemassa olevaa spottia </div>
+        <div class='panel-body'>
 
     <form method="POST">
         {%csrf_token%}
         {{ form }}
-        <button type="submit">Save</button>
+        <br>
+        <div class="btn-toolbar" style="padding-left: 15px">
+            <button class="btn btn-primary" type="submit">Tallenna</button>
+            {%if spot%}
+                <a class="btn btn-danger" href="{% url 'delete_spot' spot.id %}">Poista</a>
+            {%endif%}
+            <a class="btn btn-info" href="{% url 'home' %}">Takaisin</a>
+        </div>
     </form>
 
-    {%if question%}
-        <a href="{% url 'delete_question' question.id %}">Delete</a>
-    {%endif%}
-
-</body>
-</html>
+    
+</div>
+</div>
+</div>
+</div>
+    {% endblock content %}
