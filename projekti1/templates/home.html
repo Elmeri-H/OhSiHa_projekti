@@ -4,10 +4,18 @@
 {% block content %}
 <div>
     <div class=container-fluid>
+        <div class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="nav-item" href="{% url 'show_chart1' %}">Kuvaajat</a>
+                <a class="nav-item" href="{% url 'create_spot' %}">Lisää spotti</a>
+        </div>
+    </div>
+
+    <div class=container-fluid>
         <br>
         <h1>Tampereen rullalautailualueet</h1>
         
             <div style="position:absolute;top:20px;right:20px;">
+                <a class="btn btn-danger" href="{% url 'show_chart1' %}">kuvaajia</a>
                 {% if user.is_authenticated %}
                 <div class="alert alert-success">
                     Terve {{ user.username }}!
@@ -15,7 +23,7 @@
                 <br>
                 <a class="btn btn-danger" href="{% url 'logout' %}">Kirjaudu ulos</a>
                 <a class="btn btn-success" href="{% url 'create_spot' %}">Lisää spotti</a>
-
+                
                 {% else %}
                 <p class="alert alert-danger" role=alert>Kirjaudu sisään tai rekisteröidy muokataksesi spotteja</p>
                 <a class="btn btn-primary" href="{% url 'login' %}">Kirjaudu sisään</a>
@@ -77,5 +85,6 @@
             <h3>Ei skeittispotteja saatavilla. :( Lisää ensimmäinen! </h3>
         {% endif %}
     </div>
+    
 </div>
 {% endblock content %}

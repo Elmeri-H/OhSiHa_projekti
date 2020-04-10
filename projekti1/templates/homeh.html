@@ -88,3 +88,52 @@
     <button type="submit">Rekisteröidy</button>
   </form>
 {% endblock %}  
+
+
+
+chart = {
+  'chart' : {'type': 'timeline'},
+  'xAxis': {
+      'visible': False
+  },
+  'yAxis': {
+      'visible': False
+  },
+  'title': {
+  'text': 'Aikajana Tampereen skeittipuistoista lähivuosina'
+  },
+  'subtitle': {
+      'text': 'Aikajana on laadittu löytämieni tietojeni perusteella, eikä välttämättä kata kaikkia Tampereen skeittipuistoja'
+  },
+  'colors': [
+      '#4185F3',
+      '#427CDD',
+      '#406AB2',
+      '#3E5A8E',
+      '#3B4A68',
+      '#363C46'
+  ],
+  'series': [{
+      'data': [{
+          'name': 'dfgdffg',
+          'label': '1951: First dogs in space',
+          'description': '22 July 1951 First dogs in space (Dezik and Tsygan) '
+      }, {
+          'name': 'asd',
+          'label': '1957: First artificial satellite',
+          'description': '4 October 1957 First artificial satellite. First signals from space.'
+      }, {
+          'name': 'Tikkutehdas DIY:n purku',
+          'label': '2019: Tikkutehaan alueella sijainnut DIY-parkki purettiin uusien kerrostalojen tieltä.'
+      }, {
+          'name': 'Hallilan skeittipaikkojen purku',
+          'label': '2019: Hallilassa parkkipaikalla sijainnut pieni skeittipaikka purettiin ratikkatyömään tieltä.'
+      }, {
+          'name': 'Kenneli DIY:n pihaparkki valmistui',
+          'label': '2019: Loppusyksystä päästiin kokeilemaan pihaparkin uutta laajennusta.'
+      }, {
+          'name': 'Vapaa-ajanmaan rullalautailualueen purku',
+          'label': '2020: Skeittipuisto purettiin uusien kerrostalojen tieltä.'
+      }]
+  }]
+}

@@ -8,22 +8,22 @@
         <div class='panel-heading'> Lisää uusi tai päivitä olemassa olevaa spottia </div>
         <div class='panel-body'>
 
-    <form method="POST">
-        {%csrf_token%}
-        {{ form }}
-        <br>
-        <div class="btn-toolbar" style="padding-left: 15px">
-            <button class="btn btn-primary" type="submit">Tallenna</button>
-            {%if spot%}
-                <a class="btn btn-danger" href="{% url 'delete_spot' spot.id %}">Poista</a>
-            {%endif%}
-            <a class="btn btn-info" href="{% url 'home' %}">Takaisin</a>
-        </div>
-    </form>
+            <form method="POST">
+                {%csrf_token%}
+                {{ form }}
+                <br>
+                <div class="btn-toolbar" style="padding-left: 15px">
+                    <button class="btn btn-primary" type="submit">Tallenna</button>
+                    {%if spot%}
+                        <a class="btn btn-danger" href="{% url 'delete_spot' spot.id %}">Poista</a>
+                    {%endif%}
+                    <a class="btn btn-info" href="{% url 'home' %}">Takaisin</a>
+                </div>
+            </form>
 
     
-</div>
-</div>
-</div>
+        </div>
+        </div>
+    </div>
 </div>
     {% endblock content %}
